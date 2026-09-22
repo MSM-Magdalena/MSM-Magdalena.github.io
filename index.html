@@ -412,7 +412,7 @@
 
       <nav class="sections">
         <a href="#profil">Profil</a>
-        <a href="#werdegang">Berufsausbildung</a>
+        <a href="#werdegang">Berufserfahrung</a>
         <a href="#ausbildung">Ausbildung</a>
         <a href="#projekte">Projekte</a>
         <a href="#faehigkeiten">Fähigkeiten</a>
@@ -475,11 +475,19 @@
     <section id="ausbildung">
       <h2>Ausbildung</h2>
       <div class="timeline">
-
+      
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-title">Master Interactive Technologies</span>
+            <span class="entry-time">September 2025 – aktuel</span>
+          </div>
+          <div class="entry-org">University of Applied Sciences St. Pölten</div>
+          <p>Masterklasse: Industrie 4.0</p>
+        </div>
         <div class="entry">
           <div class="entry-head">
             <span class="entry-title">Bachelor Smart Engineering</span>
-            <span class="entry-time">September 2022 –Oktober 2025</span>
+            <span class="entry-time">September 2022 – Oktober 2025</span>
           </div>
           <div class="entry-org">University of Applied Sciences St. Pölten</div>
           <p>Vertiefung: Smart Automation</p>
@@ -491,6 +499,7 @@
             <span class="entry-time">September 2016 – Juni 2019</span>
           </div>
           <div class="entry-org">Francisco Josephinum Wieselburg</div>
+          <p>Sparte: Landwirtschaft</p>
         </div>
 
       </div>
@@ -499,46 +508,22 @@
   <!-- ---------- PROJEKTE ---------- -->
     <section id="projekte">
       <h2>Projekte</h2>
-
+      
       <div class="project">
         <div class="project-head">
-          <span class="project-title">RAG-Prototyp: Technisches Handbuch-QA</span>
+          <span class="project-title">RAGMAN - RAG-based Maintenance And kNowledge assistant</span>
           <div class="project-links">
             <a href="#" target="_blank" rel="noopener">Live</a>
             <a href="#" target="_blank" rel="noopener">Code</a>
           </div>
         </div>
-        <p>
-          Entwicklung eines lokalen Retrieval-Augmented-Generation-Systems, das Benutzerfragen 
-          zu technischen Handbüchern präzise beantwortet und die Quellen (Seitenzahl) ausweist — 
-          evaluiert anhand der Bticino Classe100 A16E Gegensprechanlage. Vollständig lokal 
-          betrieben, ohne Cloud-API oder externe Dienste.
-        </p>
-        <div class="tags">
-          <span>Python</span>
-          <span>ChromaDB</span>
-          <span>Ollama</span>
-          <span>sentence-transformers</span>
-          <span>Gradio</span>
-          <span>pdfminer</span>
-        </div>
-      </div>
 
-      <div class="project">
-        <div class="project-head">
-          <span class="project-title">Knowledge Graph Evaluation: Neo4j vs. Docs2KG</span>
-          <div class="project-links">
-            <a href="#" target="_blank" rel="noopener">Live</a>
-            <a href="#" target="_blank" rel="noopener">Code</a>
-          </div>
-        </div>
         <p>
-          Vergleichende Evaluation zweier Open-Source-Frameworks zur automatisierten 
-          Wissensextraktion aus technischen Dokumenten: Neo4j LLM Graph Builder 
-          (LLM-basierte Entitäts- und Relationsextraktion) und Docs2KG 
-          (layout-basiertes Parsing). Identifikation von Optimierungspotenzialen 
-          bei OCR, Chunking-Strategie und Ähnlichkeitsmetriken.
+          Projektmitarbeit und Forschung zu Retrieval-Augmented-Generation-(RAG)-Ansätzen zur automatisierten Wissensextraktion 
+          aus technischen Dokumenten und zum Aufbau eines Knowledge Graphs. Evaluation zweier Open-Source-Frameworks die anhand 
+          einer Kaffeemaschinen-Bedienungsanleitung (NESCAFÉ Dolce Gusto Infinissima) getestet wurden, und das vollständig lokal, ohne Cloud-API.
         </p>
+
         <div class="tags">
           <span>Neo4j</span>
           <span>Docs2KG</span>
@@ -546,9 +531,86 @@
           <span>Ollama</span>
           <span>llama3.2</span>
           <span>APOC</span>
+          <span>Knowledge Graph</span>
+          <span>Python</span>
         </div>
-      </div>
 
+        <div class="accordion">
+
+          <details>
+            <summary>Projektziele</summary>
+            <div class="accordion-content">
+              <ul>
+                <li>Automatisierte Wissensextraktion aus einem technischen PDF-Handbuch</li>
+                <li>Vergleich zweier Ansätze: LLM-basierte Extraktion (Neo4j) vs. layout-basiertes Parsing (Docs2KG)</li>
+                <li>Aufbau eines abfragbaren Knowledge Graphs mit Entitäten und Relationen</li>
+                <li>Evaluation von Stärken, Schwächen und Praxistauglichkeit beider Frameworks</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>Technische Umsetzung</summary>
+            <div class="accordion-content">
+              <ul>
+                <li><strong>Neo4j LLM Graph Builder:</strong> LLM-basierte Entitäts- und Relationsextraktion aus Text-Chunks via Ollama und llama3.2:1b, gespeichert als Chunk-Nodes mit Vektorembeddings in Neo4j 5.23</li>
+                <li><strong>Docs2KG:</strong> Layout-basiertes Parsen der Dokumenthierarchie (H1–H6, P, TABLE) via Docling und RapidOCR, Named Entity Recognition via spaCy, LLM-Validierung via Ollama</li>
+                <li><strong>Infrastruktur:</strong> Vollständig in Docker betrieben — Neo4j, Ollama und Inference-Server als separate Container</li>
+                <li><strong>Abfrage:</strong> Cypher-Queries in Neo4j Browser; Graph-Visualisierung und CSV-Export der Ergebnisse</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>Herausforderungen</summary>
+            <div class="accordion-content">
+              <ul>
+                <li><strong>RAM-Engpass:</strong> llama3.2:latest benötigt 3.5 GiB, nur 2.3 GiB verfügbar, daher Lösung: llama3.2:1b</li>
+                <li><strong>APOC-Plugin:</strong> Neo4j benötigte manuelles Einbinden des APOC JAR (apoc-5.23.0-core.jar) via Volume-Mount</li>
+                <li><strong>Dateiname als Entität:</strong> das File wurde öfter als Knoten extrahiert, die Ursache: fehlende Metadaten-Trennung im Chunking</li>
+                <li><strong>OCR-Encoding:</strong> RapidOCR kodiert deutsche Umlaute falsch (ü→ã¼, ß→ãÿ), das betrifft NER und LLM-Validierung</li>
+                <li><strong>LLM-Ausgabeformat:</strong> JSON-Konformität nicht garantiert, daher robuste Fehlerbehandlung und Retry-Logik notwendig</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>Ergebnisse</summary>
+            <div class="accordion-content">
+              <ul>
+                <li><strong>Neo4j:</strong> Graph mit Chunk-Nodes und Vektorembeddings; Entitäten wie Sicherheitshinweise, Produktkomponenten und Konfigurationsschritte erkannt, jedoch dominiert der Dateiname als häufigster Knoten</li>
+                <li><strong>Docs2KG:</strong> Strukturierter JSON-Dokumentbaum der Kapitel­hierarchie; Tabellenstruktur korrekt erkannt, Inhalte durch OCR-Fehler bei Umlauten teils unleserlich</li>
+                <li><strong>Fazit:</strong> Neo4j eignet sich besser für semantische Suche und Relationsabfragen; Docs2KG für strukturgetreue Navigation ohne LLM-Abhängigkeit</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>Learnings</summary>
+            <div class="accordion-content">
+              <ul>
+                <li>OCR-Qualität ist die wichtigste Stellschraube, da Fehler sonst durch alle nachgelagerten Schritte propagieren</li>
+                <li>Chunk-Metadaten müssen klar vom Dokumentinhalt getrennt sein, sonst extrahiert das LLM den Dateinamen als Entität</li>
+                <li>Knowledge Graphs und RAG verfolgen unterschiedliche Ziele: KG für Relationen, RAG für Faktenfragen</li>
+                <li>Kleine lokale Modelle (1B) reichen für eine einfache Extraktion, stoßen aber bei komplexen Konfigurationstabellen an ihre Grenzen</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>Ausblick</summary>
+            <div class="accordion-content">
+              <ul>
+                <li>OCR verbessern: Tesseract (deu) oder Azure Document Intelligence für korrekte Umlautbehandlung</li>
+                <li>Entity-Deduplication: APOC-Merge-Queries um doppelte Knoten zusammenzuführen</li>
+                <li>GraphRAG: eine Kombination aus Vektorsuche und Knowledge Graph (LangChain + Neo4j) als mögliche nächste Schritte</li>
+                <li>Optionale Erweiterung auf weitere Dokumenttypen: E-Mails, Excel, Webseiten (wie im Docs2KG-Paper vorgesehen)</li>
+              </ul>
+            </div>
+          </details>
+
+        </div><!-- /accordion -->
+      </div><!-- /project -->
     </section>
 
     <!-- ---------- FÄHIGKEITEN ---------- -->
@@ -587,8 +649,8 @@
       <p>„Ich freue mich über Nachrichten zu Projekten, Jobangeboten oder einfach zum Austausch.“</p>
       <div class="contact-list">
         <a href="mailto:lena.schreivogl@gmx.at"><span class="label">E-Mail</span> lena.schreivogl@gmx.at</a>
-        <a href="https://github.com/MSM-Magdalena" target="_blank" rel="noopener"><span class="label">GitHub</span> github.com/MSM-Magdalena</a>
-        <a href="https://www.linkedin.com/in/magdalena-schreivogl-a8bb0025b/?isSelfProfile=true" target="_blank" rel="noopener"><span class="label">LinkedIn</span> linkedin.com/in/magdalena-schreivogl-a8bb0025b/?isSelfProfile=true</a>
+        <a href="https://github.com/MSM-Magdalena" target="_blank" rel="noopener"><span class="label">GitHub</span>MSM-Magdalena</a>
+        <a href="https://www.linkedin.com/in/magdalena-schreivogl-a8bb0025b/?isSelfProfile=true" target="_blank" rel="noopener"><span class="label">LinkedIn</span>Magdalena Schreivogl</a>
       </div>
     </section>
 
