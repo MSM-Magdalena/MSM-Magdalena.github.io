@@ -422,8 +422,8 @@
 
     <div class="sidebar-footer">
       <a href="https://github.com/MSM-Magdalena" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://linkedin.com/in/Magdalena-Schreivogl" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:[deine@email.com]">E-Mail</a>
+      <a href="https://www.linkedin.com/in/magdalena-schreivogl-a8bb0025b/?isSelfProfile=true" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:lena.schreivogl@gmx.at">E-Mail</a>
     </div>
   </aside>
 
@@ -512,10 +512,7 @@
       <div class="project">
         <div class="project-head">
           <span class="project-title">RAGMAN - RAG-based Maintenance And kNowledge assistant</span>
-          <div class="project-links">
-            <a href="#" target="_blank" rel="noopener">Live</a>
-            <a href="#" target="_blank" rel="noopener">Code</a>
-          </div>
+         
         </div>
 
         <p>
@@ -553,9 +550,9 @@
             <summary>Technische Umsetzung</summary>
             <div class="accordion-content">
               <ul>
-                <li><strong>Neo4j LLM Graph Builder:</strong> LLM-basierte Entitäts- und Relationsextraktion aus Text-Chunks via Ollama und llama3.2:1b, gespeichert als Chunk-Nodes mit Vektorembeddings in Neo4j 5.23</li>
+                <li><strong>Neo4j LLM Graph Builder:</strong> LLM-basierte Entitäts- und Relationsextraktion aus Text-Chunks via Ollama mit llama3.2:1b, gespeichert als Chunk-Nodes mit Vektorembeddings in Neo4j 5.23</li>
                 <li><strong>Docs2KG:</strong> Layout-basiertes Parsen der Dokumenthierarchie (H1–H6, P, TABLE) via Docling und RapidOCR, Named Entity Recognition via spaCy, LLM-Validierung via Ollama</li>
-                <li><strong>Infrastruktur:</strong> Vollständig in Docker betrieben — Neo4j, Ollama und Inference-Server als separate Container</li>
+                <li><strong>Infrastruktur:</strong> Vollständig in Docker betrieben; Neo4j, Ollama und Inference-Server als separate Container</li>
                 <li><strong>Abfrage:</strong> Cypher-Queries in Neo4j Browser; Graph-Visualisierung und CSV-Export der Ergebnisse</li>
               </ul>
             </div>
@@ -565,11 +562,11 @@
             <summary>Herausforderungen</summary>
             <div class="accordion-content">
               <ul>
-                <li><strong>RAM-Engpass:</strong> llama3.2:latest benötigt 3.5 GiB, nur 2.3 GiB verfügbar, daher Lösung: llama3.2:1b</li>
+                <li><strong>RAM-Engpass:</strong> llama3.2:latest benötigt 3.5 GiB, aber nur 2.3 GiB verfügbar, daher die Lösung des kleineren Models llama3.2:1b</li>
                 <li><strong>APOC-Plugin:</strong> Neo4j benötigte manuelles Einbinden des APOC JAR (apoc-5.23.0-core.jar) via Volume-Mount</li>
                 <li><strong>Dateiname als Entität:</strong> das File wurde öfter als Knoten extrahiert, die Ursache: fehlende Metadaten-Trennung im Chunking</li>
                 <li><strong>OCR-Encoding:</strong> RapidOCR kodiert deutsche Umlaute falsch (ü→ã¼, ß→ãÿ), das betrifft NER und LLM-Validierung</li>
-                <li><strong>LLM-Ausgabeformat:</strong> JSON-Konformität nicht garantiert, daher robuste Fehlerbehandlung und Retry-Logik notwendig</li>
+                <li><strong>LLM-Ausgabeformat:</strong> JSON-Konformität ist nicht garantiert, daher robuste Fehlerbehandlung und Retry-Logik notwendig</li>
               </ul>
             </div>
           </details>
@@ -589,7 +586,7 @@
             <summary>Learnings</summary>
             <div class="accordion-content">
               <ul>
-                <li>OCR-Qualität ist die wichtigste Stellschraube, da Fehler sonst durch alle nachgelagerten Schritte propagieren</li>
+                <li>OCR-Qualität ist eine wichtige Stellschraube, da Fehler sonst durch alle nachgelagerten Schritte propagieren</li>
                 <li>Chunk-Metadaten müssen klar vom Dokumentinhalt getrennt sein, sonst extrahiert das LLM den Dateinamen als Entität</li>
                 <li>Knowledge Graphs und RAG verfolgen unterschiedliche Ziele: KG für Relationen, RAG für Faktenfragen</li>
                 <li>Kleine lokale Modelle (1B) reichen für eine einfache Extraktion, stoßen aber bei komplexen Konfigurationstabellen an ihre Grenzen</li>
